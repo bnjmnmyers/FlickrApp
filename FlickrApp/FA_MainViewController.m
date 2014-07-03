@@ -62,11 +62,17 @@
 - (IBAction)searchPhotos:(id)sender
 {
     if (internetReachable.isConnected) {
+        _searchingView.hidden = FALSE;
         NSLog(@"Yoooouuuuu... You've got what I need!");
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
             [dataHandler searchPublicFlickrPhotosByKeyword:_tfKeyword.text];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self performSegueWithIdentifier:@"segueToPhotos" sender:self];
+            });
         });
-        [self performSegueWithIdentifier:@"segueToPhotos" sender:self];
+    } else {
+        _alert = [[UIAlertView alloc]initWithTitle:@"No Connection" message:@"There seems to be a problem with your internet connection. Please check your connection and try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+		[_alert show];
     }
 }
 @end

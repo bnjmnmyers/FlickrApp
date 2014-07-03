@@ -2,7 +2,7 @@
 //  Comment.m
 //  FlickrApp
 //
-//  Created by Benjamin Myers on 7/2/14.
+//  Created by Benjamin Myers on 7/3/14.
 //  Copyright (c) 2014 AppGuys. All rights reserved.
 //
 
@@ -12,6 +12,8 @@
 
 @implementation Comment
 
+@dynamic content;
+@dynamic commentID;
 @dynamic photo;
 
 @end

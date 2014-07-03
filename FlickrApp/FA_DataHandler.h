@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Photo.h"
 
 @interface FA_DataHandler : NSObject <UIAlertViewDelegate>
 
@@ -21,11 +22,13 @@
 
 // Variable Properties
 @property (strong, nonatomic) NSArray *photos;
+@property (strong, nonatomic) NSArray *sortedComments;
 @property (strong, nonatomic) NSArray *userInfo;
 @property (strong, nonatomic) UIAlertView *alert;
 
 - (void)searchPublicFlickrPhotosByKeyword:(NSString *)keyword;
 - (NSFetchedResultsController *)loadPhotoData;
 - (NSArray *)loadUserInfoByUserID:(NSString *)userID;
+- (NSArray *)loadCommentsByPhoto:(Photo *)photo;
 
 @end

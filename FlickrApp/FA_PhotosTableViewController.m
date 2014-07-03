@@ -67,14 +67,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return [[_fetchedPhotosController sections]count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [[[_fetchedPhotosController sections] objectAtIndex:section]
             numberOfObjects];
@@ -88,9 +86,28 @@
     // Configure the cell...
     Photo *newPhoto = nil;
     newPhoto = [_fetchedPhotosController objectAtIndexPath:indexPath];
-    NSLog(@"%@", newPhoto.title);
     
-    cell.textLabel.text = newPhoto.title;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+        
+        NSString *getStringURL = [NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@_s.jpg", newPhoto.farm, newPhoto.server, newPhoto.photoID, newPhoto.secret];
+        NSURL *getImgURL = [NSURL URLWithString:getStringURL];
+        NSData *getImageData = [NSData dataWithContentsOfURL:getImgURL];
+        UIImage *getImageToSync = [UIImage imageWithData:getImageData];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            // Load actual image.
+            [[cell imageView]setImage:getImageToSync];
+            [cell setNeedsLayout];
+            
+            // Create a new label, hide it and fill it with the id for the given object.
+            cell.textLabel.text = newPhoto.title;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"Comments: %d", [newPhoto.comment count]];
+            cell.textLabel.numberOfLines = 0;
+            
+        });
+        
+    });
     
     return cell;
 }

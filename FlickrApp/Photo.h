@@ -16,7 +16,7 @@
 @property (nonatomic, retain) NSNumber * farm;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * server;
-@property (nonatomic, retain) NSNumber * secret;
+@property (nonatomic, retain) NSString * secret;
 @property (nonatomic, retain) NSString * ownerID;
 @property (nonatomic, retain) NSNumber * isPublic;
 @property (nonatomic, retain) NSNumber * isFriend;

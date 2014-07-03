@@ -15,6 +15,10 @@
 // Data Import
 #import "Owner.h"
 
+#define FONT_SIZE 14.0f
+#define CELL_CONTENT_WIDTH 320.0f
+#define CELL_CONTENT_MARGIN 10.0f
+
 @interface FA_PhotoDetailsViewController ()
 {
     FA_DataHandler *dataHandler;
@@ -38,8 +42,20 @@
     [super viewDidLoad];
     
     dataHandler = [[FA_DataHandler alloc] init];
-    NSLog(@"OWNER USERNAME:%@", _currentPhoto.owner.username);
-    NSLog(@"OWNER REALNAME:%@", _currentPhoto.owner.realname);
+    
+    // Get all comments for selected photo
+    _sortedComments = [dataHandler loadCommentsByPhoto:_currentPhoto];
+    
+    _lblUsername.text = _currentPhoto.owner.username;
+    _lblRealname.text = _currentPhoto.owner.realname;
+    _lblCommentCount.text = [NSString stringWithFormat:@"%d",[_sortedComments count]];
+
+    // Get image to display in a larger format
+    NSString *getStringURL = [NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@.jpg", _currentPhoto.farm, _currentPhoto.server, _currentPhoto.photoID, _currentPhoto.secret];
+    NSURL *getImgURL = [NSURL URLWithString:getStringURL];
+    NSData *getImageData = [NSData dataWithContentsOfURL:getImgURL];
+    UIImage *chosenImage = [UIImage imageWithData:getImageData];
+    _imageView.image = chosenImage;
     
 	// Do any additional setup after loading the view.
 }
@@ -56,14 +72,14 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 1;
+    return [_sortedComments count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -71,9 +87,20 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    if ( cell == nil ) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+	}
+	_comment = [_sortedComments objectAtIndex:indexPath.row];
     // Configure the cell...
+    
+    cell.textLabel.text = _comment.content;
+    cell.textLabel.numberOfLines = 0;
    
+   
+    
     return cell;
 }
+
+
 
 @end

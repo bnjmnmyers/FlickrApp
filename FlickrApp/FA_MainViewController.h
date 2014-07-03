@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FA_MainViewController : UIViewController
+@interface FA_MainViewController : UIViewController <UIAlertViewDelegate>
 
 // UI Properties
 @property (strong, nonatomic) IBOutlet UITextField *tfKeyword;
+@property (strong, nonatomic) IBOutlet UIView *searchingView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) UIAlertView *alert;
 
 // Actions
 - (IBAction)searchPhotos:(id)sender;
