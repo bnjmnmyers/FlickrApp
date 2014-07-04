@@ -184,7 +184,6 @@
 {
     if ([[segue identifier] isEqualToString:@"segueToPhotoDetails"]) {
         _indexPath = [self.tableView indexPathForSelectedRow];
-        NSLog(@"%@", _indexPath);
         FA_PhotoDetailsViewController *pdvc = [segue destinationViewController];
         pdvc.currentPhoto = [_fetchedPhotosController objectAtIndexPath:_indexPath];
     }
