@@ -39,6 +39,8 @@
     internetReachable = [[Reachability alloc] init];
     dataHandler = [[FA_DataHandler alloc] init];
     [internetReachable checkConnection];
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.view addGestureRecognizer:gestureRecognizer];
     
     // Do any additional setup after loading the view.
 }
@@ -59,6 +61,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)hideKeyboard
+{
+    [_tfKeyword resignFirstResponder];
+}
+
 - (IBAction)searchPhotos:(id)sender
 {
     if (internetReachable.isConnected) {

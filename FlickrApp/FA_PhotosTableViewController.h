@@ -14,8 +14,12 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedPhotosController;
 
+// UI Properties
+@property (strong, nonatomic) UIImageView *imgView;
+
 // Variable Properties
 @property (strong, nonatomic) NSArray *photos;
+@property (strong, nonatomic) NSMutableArray *images;
 @property (strong, nonatomic) NSIndexPath *indexPath;
 
 @end

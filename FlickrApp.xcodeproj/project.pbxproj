@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7210D7B1966E6BF00A0CB46 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7210D7A1966E6BF00A0CB46 /* Images-2.xcassets */; };
+		D7210D7D1966EEC600A0CB46 /* ActivityIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = D7210D7C1966EEC600A0CB46 /* ActivityIndicator.png */; };
+		D7210D7F1966EEE800A0CB46 /* launchScreen-1024h.png in Resources */ = {isa = PBXBuildFile; fileRef = D7210D7E1966EEE800A0CB46 /* launchScreen-1024h.png */; };
+		D7210D811966F1B800A0CB46 /* Images-3.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7210D801966F1B800A0CB46 /* Images-3.xcassets */; };
 		D78BC8351963B844008F98AB /* flickrLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D78BC8341963B844008F98AB /* flickrLogo.jpg */; };
 		D78BC8371963BA6A008F98AB /* logo-FlickR.png in Resources */ = {isa = PBXBuildFile; fileRef = D78BC8361963BA6A008F98AB /* logo-FlickR.png */; };
 		D78BC83E19644D5A008F98AB /* FA_PhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BC83D19644D5A008F98AB /* FA_PhotosTableViewController.m */; };
@@ -66,6 +70,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D7210D7A1966E6BF00A0CB46 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		D7210D7C1966EEC600A0CB46 /* ActivityIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ActivityIndicator.png; sourceTree = "<group>"; };
+		D7210D7E1966EEE800A0CB46 /* launchScreen-1024h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchScreen-1024h.png"; sourceTree = "<group>"; };
+		D7210D801966F1B800A0CB46 /* Images-3.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-3.xcassets"; sourceTree = "<group>"; };
 		D78BC8341963B844008F98AB /* flickrLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flickrLogo.jpg; sourceTree = "<group>"; };
 		D78BC8361963BA6A008F98AB /* logo-FlickR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-FlickR.png"; sourceTree = "<group>"; };
 		D78BC83C19644D5A008F98AB /* FA_PhotosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FA_PhotosTableViewController.h; sourceTree = "<group>"; };
@@ -216,6 +224,8 @@
 				D7FA06991962FFB3003F2E22 /* FA_AppDelegate.h */,
 				D7FA069A1962FFB3003F2E22 /* FA_AppDelegate.m */,
 				D7FA069F1962FFB3003F2E22 /* Images.xcassets */,
+				D7210D7A1966E6BF00A0CB46 /* Images-2.xcassets */,
+				D7210D801966F1B800A0CB46 /* Images-3.xcassets */,
 				D7FA06911962FFB3003F2E22 /* Supporting Files */,
 			);
 			path = FlickrApp;
@@ -224,6 +234,7 @@
 		D7FA06911962FFB3003F2E22 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D7210D7C1966EEC600A0CB46 /* ActivityIndicator.png */,
 				D78BC8871965C16F008F98AB /* AppIcon29x29.png */,
 				D78BC8881965C16F008F98AB /* AppIcon29x29@2x.png */,
 				D78BC8891965C16F008F98AB /* AppIcon40x40.png */,
@@ -241,6 +252,7 @@
 				D78BC8951965C16F008F98AB /* iTunesArtwork.png */,
 				D78BC8961965C16F008F98AB /* iTunesArtwork@2x.png */,
 				D78BC8851965BEEF008F98AB /* launchScreen-568h.png */,
+				D7210D7E1966EEE800A0CB46 /* launchScreen-1024h.png */,
 				D78BC8811965B79B008F98AB /* flickrLogo.png */,
 				D78BC8361963BA6A008F98AB /* logo-FlickR.png */,
 				D78BC8341963B844008F98AB /* flickrLogo.jpg */,
@@ -373,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D78BC8371963BA6A008F98AB /* logo-FlickR.png in Resources */,
+				D7210D7D1966EEC600A0CB46 /* ActivityIndicator.png in Resources */,
 				D7FA06BE1962FFBF003F2E22 /* Main.storyboard in Resources */,
 				D78BC8971965C16F008F98AB /* AppIcon29x29.png in Resources */,
 				D78BC8351963B844008F98AB /* flickrLogo.jpg in Resources */,
@@ -381,11 +394,14 @@
 				D78BC89F1965C16F008F98AB /* AppIcon60x60.png in Resources */,
 				D78BC8861965BEEF008F98AB /* launchScreen-568h.png in Resources */,
 				D78BC89C1965C16F008F98AB /* AppIcon50x50@2x.png in Resources */,
+				D7210D7F1966EEE800A0CB46 /* launchScreen-1024h.png in Resources */,
 				D78BC8A51965C16F008F98AB /* iTunesArtwork.png in Resources */,
 				D78BC8A31965C16F008F98AB /* AppIcon76x76.png in Resources */,
 				D78BC8A11965C16F008F98AB /* AppIcon72x72.png in Resources */,
 				D78BC89D1965C16F008F98AB /* AppIcon57x57.png in Resources */,
+				D7210D811966F1B800A0CB46 /* Images-3.xcassets in Resources */,
 				D78BC89A1965C16F008F98AB /* AppIcon40x40@2x.png in Resources */,
+				D7210D7B1966E6BF00A0CB46 /* Images-2.xcassets in Resources */,
 				D78BC8A01965C16F008F98AB /* AppIcon60x60@2x.png in Resources */,
 				D7FA06951962FFB3003F2E22 /* InfoPlist.strings in Resources */,
 				D78BC89E1965C16F008F98AB /* AppIcon57x57@2x.png in Resources */,
@@ -540,14 +556,14 @@
 		D7FA06B81962FFB3003F2E22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlickrApp/FlickrApp-Prefix.pch";
 				INFOPLIST_FILE = "FlickrApp/FlickrApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -555,14 +571,14 @@
 		D7FA06B91962FFB3003F2E22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlickrApp/FlickrApp-Prefix.pch";
 				INFOPLIST_FILE = "FlickrApp/FlickrApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

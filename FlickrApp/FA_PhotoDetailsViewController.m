@@ -44,6 +44,7 @@
     dataHandler = [[FA_DataHandler alloc] init];
     
     // Get all comments for selected photo
+    NSLog(@"%@", _currentPhoto.title);
     _sortedComments = [dataHandler loadCommentsByPhoto:_currentPhoto];
     
     _lblUsername.text = _currentPhoto.owner.username;

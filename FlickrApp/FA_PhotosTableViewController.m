@@ -42,6 +42,8 @@
     
     dataHandler = [[FA_DataHandler alloc] init];
     
+    _images = [[NSMutableArray alloc] init];
+    
     NSError *error;
 	if (![[dataHandler loadPhotoData] performFetch:&error]) {
 		NSLog(@"An error has occurred: %@", error);
@@ -80,12 +82,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Photo *newPhoto = nil;
+    newPhoto = [_fetchedPhotosController objectAtIndexPath:indexPath];
+    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
-    Photo *newPhoto = nil;
-    newPhoto = [_fetchedPhotosController objectAtIndexPath:indexPath];
+    if ( cell == nil ) {
+		cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+	}
+
+    // Puts the image object into the images array
+	[_images addObject:newPhoto];
+	UILabel *imageIdLabel = [[UILabel alloc] init];
+	_imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 90, 60)];
+    
+    // This is the temp image, where we show a static activity indicator image.
+    UIImageView *tempImage = [[UIImageView alloc] initWithFrame:CGRectMake(40, 15, 20, 20)];
+    UIImage *getImage = [UIImage imageNamed:@"ActivityIndicator.png"];
+    
+    tempImage.image = getImage;
+    tempImage.tag = newPhoto.photoID; //Have to give it a unique identifier so that we can remove it later when the image loads
+    
+    [cell addSubview:tempImage ];
+
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
         
@@ -96,11 +116,17 @@
         
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             
+            // This removes the temporary image based on the unique identifier
+            UIImageView *viewToRemove = [self.view viewWithTag:newPhoto.photoID];
+            [viewToRemove removeFromSuperview];
+            
             // Load actual image.
             [[cell imageView]setImage:getImageToSync];
             [cell setNeedsLayout];
             
             // Create a new label, hide it and fill it with the id for the given object.
+            imageIdLabel.hidden = TRUE;
+            [cell addSubview:imageIdLabel];
             cell.textLabel.text = newPhoto.title;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"Comments: %d", [newPhoto.comment count]];
             cell.textLabel.numberOfLines = 0;
@@ -158,6 +184,7 @@
 {
     if ([[segue identifier] isEqualToString:@"segueToPhotoDetails"]) {
         _indexPath = [self.tableView indexPathForSelectedRow];
+        NSLog(@"%@", _indexPath);
         FA_PhotoDetailsViewController *pdvc = [segue destinationViewController];
         pdvc.currentPhoto = [_fetchedPhotosController objectAtIndexPath:_indexPath];
     }
